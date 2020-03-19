@@ -1,5 +1,5 @@
 <?php
-include("view.php");
+include("views/view.php");
 include("models/user.php");
 include("models/security.php");
 
@@ -24,7 +24,7 @@ class ControllerUser{
     private function showForLoging(){
         
         $data["mensaje"] = ((isset($_REQUEST["mensaje"])) ? $_REQUEST["mensaje"] : null);
-        View::show("forLoging", $data);
+        View::show("createUser", $data);
     }
 
     private function checkForLoging(){
@@ -101,7 +101,7 @@ class ControllerUser{
         if ($resultInsert == 1) {
             View::redirect("showForLoging", $data);
         } else{
-            View::redirect("formCreateUser", $data);
+            View::redirect("newUser", $data);
         }
     }
 
@@ -122,8 +122,7 @@ class ControllerUser{
     //modificar usuarios
     private function formUpdateUser() {
         $id = $data["id"];
-        $nick = $data["nick"];
-        $email = $data["email"];
+        $name = $data["name"];
         $passwd = $data["passwd"];
         $type = $data["type"];
         View::show("editUser", $data);
@@ -131,8 +130,7 @@ class ControllerUser{
 
     private function updateUser(){
         $id = $data["id"];
-        $nick = $data["nick"];
-        $email = $data["email"];
+        $name = $data["name"];
         $passwd = $data["passwd"];
         $type = $data["type"];
 
