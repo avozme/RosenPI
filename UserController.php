@@ -1,5 +1,5 @@
 <?php
-include("views/view.php");
+include("view.php");
 include("models/user.php");
 include("models/security.php");
 
