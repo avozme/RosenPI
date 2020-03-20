@@ -3,7 +3,7 @@ include("views/view.php");
 include("models/user.php");
 include("models/security.php");
 
-class ControllerUser{
+class UserController{
 
     protected $user;
 
@@ -16,47 +16,49 @@ class ControllerUser{
         if (isset($_REQUEST["do"])){
             $do = $_REQUEST["do"];
         }else {
-            $do = "showForLoging";
+            $do = "showForLogin";
         }
         $this->$do();
     }
 
-    private function showForLoging(){
+    private function showForLogin(){
         
         $data["mensaje"] = ((isset($_REQUEST["mensaje"])) ? $_REQUEST["mensaje"] : null);
         View::show("createUser", $data);
     }
 
-    private function checkForLoging(){
-        $nombre = $_REQUEST['nombre'];
-        $passwd = $_REQUEST['passwd'];
-        $user = $this->user->getForUser($nombre, $passwd);
+    private function checkForLogin(){
+        $name = $_REQUEST['namae'];
+        $password = $_REQUEST['password'];
+        $image = $_REQUEST['image'];
+        $type = $_REQUEST['type'];
+        $user = $this->user->getForUser($nombre, $password, $image, $type);
 
         if ($user != null) {
-            $this->security->openSession( ["id"=>$user->idUsuario, "tipo"=>$user->tipo] );
+            $this->security->openSession( ["id"=>$user->idUsuario, "type"=>$user->type] );
             View::redirect("mainMenu");
         } else {
-            View::redirect("showForLoging");
+            View::redirect("showForLogin");
         }
     }
 
     private function mainMenu(){
 
-        if ($this->security->get("tipo") == 0) {
-            // usuario 0 (usuario admin)
+        if ($this->security->get("type") == 1 || $this->security->get("type") == 2) {
+            // usuario 1 y 2 (usuario admin y profesor)
             echo "Menu de Administrador";
             $data["usersList"] = $this->user->getAll();
-            $data["tipo"] = $this->security->get("tipo");
-            View::show("menuUser0", $data);
-        } else if ($this->security->get("tipo") == 1) {
-            // usuario 1 (usuario normal)
+            $data["type"] = $this->security->get("type");
+            View::show("menuUser", $data);
+        } else if ($this->security->get("type") == 0) {
+            // usuario 0 (usuario normal)
             echo "Menu de Usuario";
             $data["usersList"] = $this->user->get($this->security->get("id"));
-            $data["tipo"] = $this->security->get("tipo");
-            View::show("menuUser0", $data);
+            $data["type"] = $this->security->get("type");
+            View::show("menuUser", $data);
         } else {
             // desconocido o no se ha hecho login
-            View::redirect("showForLoging", $data);
+            View::redirect("showForLogin", $data);
         }
     }
 
@@ -65,13 +67,13 @@ class ControllerUser{
 
         $this->security->closeSession();
         $data["mensaje"] = "Sesión cerrada con éxito";
-        View::redirect("showForLoging", $data);
+        View::redirect("showForLogin", $data);
     }
 
     //formulario nuevo usuario
     private function formCreateUser(){
 
-        if ($this->security->get("tipo") == 0) {
+        if ($this->security->get("type") == 0) {
             $data["userType"] = 0;
         } else {
             $data["userType"] = 1;
@@ -83,23 +85,22 @@ class ControllerUser{
     private function createUser(){
 
         $id = $data["id"];
-        $nick = $data["nick"];
-        $email = $data["email"];
-        $passwd = $data["passwd"];
+        $name = $data["name"];
+        $password = $data["password"];
+        $image = $data["image"];
         $type = $data["type"];
        
-        if (isset($_REQUEST['tipo'])) {
-            $data['tipo'] = $_REQUEST['tipo'];
+        if (isset($_REQUEST['type'])) {
+            $data['type'] = $_REQUEST['type'];
         } else {
-            $data['tipo'] = 1;
+            $data['type'] = 1;
         }
 
-        var_dump($data);
         $resultInsert = $this->user->insert($data);
         $data = null;
         
         if ($resultInsert == 1) {
-            View::redirect("showForLoging", $data);
+            View::redirect("showForLogin", $data);
         } else{
             View::redirect("newUser", $data);
         }
@@ -107,7 +108,7 @@ class ControllerUser{
 
     //borrar usuario
     private function deleteUser() {
-        if ($this->security->get("tipo") == 0) {
+        if ($this->security->get("type") == 0) {
             $resultDelete = $this->user->delete($_REQUEST['id']);
             if ($resultDelete) {
                 View::redirect("mainMenu", $data);
@@ -115,7 +116,7 @@ class ControllerUser{
                 $data["mensaje"] = "Error al borrar";
             }
         } else {
-            View::redirect("showForLoging");
+            View::redirect("showForLogin");
         }
     }
 
@@ -134,7 +135,7 @@ class ControllerUser{
         $passwd = $data["passwd"];
         $type = $data["type"];
 
-        if($this->security->get("tipo") == 0 || $this->security->get("id") == $_REQUEST['id']){
+        if($this->security->get("type") == 0 || $this->security->get("id") == $_REQUEST['id']){
             $resultUpdate = $this->user->update($data);
             if($resultUpdate){
                 View::redirect("mainMenu", $data);
