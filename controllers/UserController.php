@@ -28,15 +28,15 @@ class UserController{
     }
 
     private function checkForLogin(){
-        $name = $_REQUEST['namae'];
+        $name = $_REQUEST['name'];
         $password = $_REQUEST['password'];
         $image = $_REQUEST['image'];
         $type = $_REQUEST['type'];
-        $user = $this->user->getForUser($nombre, $password, $image, $type);
+        $user = $this->user->getForUser($name, $password, $image, $type);
 
         if ($user != null) {
             $this->security->openSession( ["id"=>$user->idUsuario, "type"=>$user->type] );
-            View::redirect("mainMenu");
+            View::redirect("mainMenu" , $data);
         } else {
             View::redirect("showForLogin");
         }
