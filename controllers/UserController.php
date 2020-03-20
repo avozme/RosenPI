@@ -36,7 +36,7 @@ class UserController{
 
         if ($user != null) {
             $this->security->openSession( ["id"=>$user->idUsuario, "type"=>$user->type] );
-            View::redirect("mainMenu" , $data);
+            View::redirect("mainMenu");
         } else {
             View::redirect("showForLogin");
         }
@@ -84,11 +84,10 @@ class UserController{
     //chekea los usuarios creados
     private function createUser(){
 
-        $id = $data["id"];
-        $name = $data["name"];
-        $password = $data["password"];
-        $image = $data["image"];
-        $type = $data["type"];
+        $name = $_REQUEST["name"];
+        $password = $_REQUEST["password"];
+        $image = $_REQUEST["image"];
+        $type = $_REQUEST["type"];
        
         if (isset($_REQUEST['type'])) {
             $data['type'] = $_REQUEST['type'];
@@ -146,10 +145,5 @@ class UserController{
         }else {
             View::redirect("mainMenu");
         }
-    }
-
-    //error
-    private function error() {
-        View::error();
     }
 }

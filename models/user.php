@@ -35,7 +35,7 @@
 
         public function insert($data) {
             
-            $sql = "INSERT INTO user(id, name, password, image, type) VALUES ('".$data['id']."', '".$data['name']."','".$data['password']."', '".$data['image']."', '".$data['type']."')";
+            $sql = "INSERT INTO user (id, name, password, image, type) VALUES ('".$data['id']."', '".$data['name']."','".$data['password']."', '".$data['image']."', '".$data['type']."')";
             $result = $this->db->query($sql);
             if ($result == 1) {
                 return true;
