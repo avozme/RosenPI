@@ -1,10 +1,10 @@
 <?php
+    include("models/dbabstract.php");
 
-    include("dbabstract.php");
     class User {
         private $db;  
 
-        public function __constructor(){
+        public function __construct(){
             $this->db = new DBAbstract("localhost", "root", "", "rosenpi");
         }
 
