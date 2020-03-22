@@ -9,7 +9,7 @@
         }
 
         public function getUser($id, $type) {
-            $result = $this->db->query("SELECT * FROM user");
+            $result = $this->db->sqlSelect("SELECT * FROM user");
             if ($result != false && $result->num_rows != 0) { 
                 $fila = $result->fetch_object();
                 $_SESSION["id"] = $fila->id;
@@ -28,7 +28,7 @@
         }
 
         public function getAll() {
-            $result = $this->db->query("SELECT * FROM user");
+            $result = $this->db->sqlSelect("SELECT * FROM user");
             return $result;
 
         }
@@ -36,7 +36,7 @@
         public function insert($data) {
             
             $sql = "INSERT INTO user (id, name, password, image, type) VALUES ('".$data['id']."', '".$data['name']."','".$data['password']."', '".$data['image']."', '".$data['type']."')";
-            $result = $this->db->query($sql);
+            $result = $this->db->sqlOther($sql);
             if ($result == 1) {
                 return true;
             } else {

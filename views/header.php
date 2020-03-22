@@ -14,7 +14,7 @@
         <ul id="button">
             <li><a href="">Clases</a></li>
             <li><a href="">Inicio</a></li>
-            <li><a href="">Porfesores</a></li>
+            <li><a href=" <?php echo URL; ?>UserController/mainMenu">Usuarios</a></li>
         </ul>
     </head>
     <body>

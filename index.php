@@ -1,5 +1,5 @@
 <?php
-include("controllers/UserController.php");
-$c = new UserController();
-$c->main();
+include("controllers/IndexController.php");
+$c = new IndexController();
+$c->index();
 ?>

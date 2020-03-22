@@ -8,16 +8,24 @@ echo "</tr>";
 echo "<tr>";
     echo "<td>Imagen</td>";
     echo "<td>Nombre</td>";
-    echo "<td>Titulacion</td>";
+    echo "<td>Tipo</td>";
     echo "<td  colspan='2'>Acciones</td>";
 echo "</tr>";
 foreach($lista as $fila) {
 
+    if ($user->type == 0)
+            $valor = "Pendiente de Asignación" 
+    elseif($user->type == 1)  
+            $valor = "Administrador" 
+    elseif($user->type == 1)  
+            $valor = "Profesor"
+    endif
+
     echo "<tr>";
-        echo "<td></td>";
-        echo "<td></td>";
-        echo "<td></td>";
-        echo "<td></td>";
+        echo "<td>$fila->image</td>";
+        echo "<td>$fial->name</td>";
+        echo "<td>$fila->tipo</td>";
+        echo "<td>$valor</td>";
         if ($data["type"] == 1 || $data["type"] == 2) {
             echo "<td><a href='index.php?do=deleteUser&id=".$fila->idUsuario."'>Eliminar</a></td>";
             echo "<td><a href='index.php?do=formUpdateUser&id=$fila->idUsuario&name=$fila->name&password=$fila->password&image=$fila->imge&type=$fila->type'>Modificar</a></td>";
