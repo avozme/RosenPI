@@ -4,8 +4,8 @@ include("models/security.php");
 
 class IndexController{
 
-    private function index(){
-        
+    private function main(){
+       
         View::show("vistaIndex");
     }
 

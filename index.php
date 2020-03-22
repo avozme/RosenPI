@@ -1,5 +1,5 @@
 <?php
 include("controllers/IndexController.php");
 $c = new IndexController();
-$c->index();
+$c->main();
 ?>
