@@ -4,7 +4,7 @@ include("models/security.php");
 
 class IndexController{
 
-    private function main(){
+    function main(){
        
         View::show("vistaIndex");
     }
