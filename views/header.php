@@ -14,7 +14,7 @@
         <ul id="button">
             <li><a href="">Clases</a></li>
             <li><a href="">Inicio</a></li>
-            <li><a href="http://localhost/index.php?controllers=UserController&main">Usuarios</a></li>
+            <li><a href="http://localhost/index.php?do=controllers/UserController/main">Usuarios</a></li>
         </ul>
     </head>
     <body>
