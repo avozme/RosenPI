@@ -44,22 +44,24 @@ class UserController{
 
     private function mainMenu(){
 
-        if ($this->security->get("type") == 1 || $this->security->get("type") == 2) {
+        /*if ($this->security->get("type") == 1 || $this->security->get("type") == 2) {
             // usuario 1 y 2 (usuario admin y profesor)
             echo "Menu de Administrador";
             $data["usersList"] = $this->user->getAll();
             $data["type"] = $this->security->get("type");
-            View::show("menuUser", $data);
+            View::show("indexUser", $data);
         } else if ($this->security->get("type") == 0) {
             // usuario 0 (usuario normal)
             echo "Menu de Usuario";
             $data["usersList"] = $this->user->get($this->security->get("id"));
             $data["type"] = $this->security->get("type");
-            View::show("menuUser", $data);
+            View::show("indexUser", $data);
         } else {
             // desconocido o no se ha hecho login
             View::redirect("showForLogin", $data);
-        }
+        }*/
+
+        View::show("indexUser", $data);
     }
 
     //cerrar sesion

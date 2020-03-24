@@ -1,15 +1,21 @@
+<div id="cuerpo">
 <?php
 $lista = $data["usersList"];
-
 echo "<table border=1>";
 echo "<tr>";
-echo "<th colspan='9'>Lista de usuarios</th>";
+if ($data["type"] == 1 || $data["type"] == 2) {
+    echo "<th colspan='5'>Lista de usuarios</th>";
+}else{
+    echo "<th colspan='3'>Lista de usuarios</th>";
+}
 echo "</tr>";
 echo "<tr>";
     echo "<td>Imagen</td>";
     echo "<td>Nombre</td>";
     echo "<td>Tipo</td>";
-    echo "<td  colspan='2'>Acciones</td>";
+    if ($data["type"] == 1 || $data["type"] == 2) {
+        echo "<td  colspan='2'>Acciones</td>";
+    }
 echo "</tr>";
 foreach($lista as $fila) {
 
@@ -34,11 +40,15 @@ foreach($lista as $fila) {
 }
 echo "</table>";
 ?>
+</div>
+
+<div id="nuevo">
 <br>
 <form action ="index.php" method="get">
     <input type="hidden" name="do" value="formCreateUser">
     <input type="submit" value="Insertar usuario">
 </form>
+</div>
 
 <?php
 echo "<a href='index.php?do=closeSession'>Cerrar sesión</a><br>";
