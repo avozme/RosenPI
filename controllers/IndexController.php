@@ -8,4 +8,13 @@ class IndexController{
        
         View::show("vistaIndex");
     }
+
+   /* //cerrar sesion
+    private function closeSession(){
+
+        $this->security->closeSession();
+        $data["mensaje"] = "Sesión cerrada con éxito";
+        View::redirect("showForLogin", $data);
+    }*/
+
 }

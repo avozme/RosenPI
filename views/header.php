@@ -1,3 +1,6 @@
+<?php
+	include("models/config.php");
+?>
 <style type="text/css">
 
 #button {
@@ -13,8 +16,8 @@
     <head>
         <ul id="button">
             <li><a href="">Clases</a></li>
-            <li><a href="http://localhost/RosenPI/index.php?do=controllers/IndexController&main">Inicio</a></li>
-            <li><a href="http://localhost/RosenPI/index.php?do=controllers/UserController&mainMenu">Usuarios</a></li>
+            <li><a href="">Inicio</a></li>
+            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controller=UserController&do=main">Usuarios</a></li>
         </ul>
         <style>
             #imagen { 
