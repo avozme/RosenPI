@@ -1,3 +1,6 @@
+<?php
+	include("models/config.php");
+?>
 <style type="text/css">
 
 #button {
@@ -14,7 +17,7 @@
         <ul id="button">
             <li><a href="">Clases</a></li>
             <li><a href="">Inicio</a></li>
-            <li><a href="http://localhost/index.php?controllers=UserController&main">Usuarios</a></li>
+            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controller=UserController&do=main">Usuarios</a></li>
         </ul>
     </head>
     <body>

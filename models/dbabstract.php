@@ -5,8 +5,8 @@
     class DBAbstract {
         private $mysql;
 
-        public function __construct($dbHost, $dbUser, $dbPass, $dbName) {
-            $this->mysql = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+        public function __construct() {
+            $this->mysql = new mysqli(Config::$dbHost, Config::$dbUser, Config::$dbPass, Config::$dbName);
         }
 
         /**
