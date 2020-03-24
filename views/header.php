@@ -25,6 +25,7 @@
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-position: center; 
+                width: 100%;
             }
             #cuerpo {
                 width: 79%;

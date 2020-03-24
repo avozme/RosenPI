@@ -44,7 +44,7 @@ class UserController{
 
     private function mainMenu(){
 
-        /*if ($this->security->get("type") == 1 || $this->security->get("type") == 2) {
+        if ($this->security->get("type") == 1 || $this->security->get("type") == 2) {
             // usuario 1 y 2 (usuario admin y profesor)
             echo "Menu de Administrador";
             $data["usersList"] = $this->user->getAll();
@@ -59,7 +59,7 @@ class UserController{
         } else {
             // desconocido o no se ha hecho login
             View::redirect("showForLogin", $data);
-        }*/
+        }
 
         View::show("indexUser", $data);
     }
@@ -79,6 +79,8 @@ class UserController{
             $data["userType"] = 0;
         } else {
             $data["userType"] = 1;
+        } else {
+            $data["userType"] = 2;
         }
         View::show("newUser", $data);
     }
