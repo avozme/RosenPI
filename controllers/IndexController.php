@@ -6,7 +6,7 @@ class IndexController{
 
     function main(){
        
-        View::show("vistaIndex");
+        View::show("indexView");
     }
 
    /* //cerrar sesion

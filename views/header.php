@@ -16,8 +16,8 @@
     <head>
         <ul id="button">
             <li><a href="">Clases</a></li>
-            <li><a href="">Inicio</a></li>
-            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controller=UserController&do=main">Usuarios</a></li>
+            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controllers=IndexController&do=main">Inicio</a></li>
+            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controllers=UserController&do=mainMenu">Usuarios</a></li>
         </ul>
         <style>
             #imagen { 
@@ -28,6 +28,7 @@
             }
             #cuerpo {
                 width: 79%;
+                float: left;
             }
             #nuevo {
                 width: 19%;
