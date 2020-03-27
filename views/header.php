@@ -1,5 +1,5 @@
 <?php
-	include("models/config.php");
+	include_once("models/config.php");
 ?>
 <style type="text/css">
 
@@ -15,9 +15,9 @@
 <html>
     <head>
         <ul id="button">
-            <li><a href="">Clases</a></li>
-            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controllers=IndexController&do=main">Inicio</a></li>
-            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controllers=UserController&do=mainMenu">Usuarios</a></li>
+            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controller=MenuController&do=index">Inicio</a></li>
+            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controller=ActivityController&do=index">Clases</a></li>
+            <li><a href="<?php echo Config::$baseUrl; ?>/index.php?controller=UserController&do=index">Usuarios</a></li>
         </ul>
         <style>
             #imagen { 

@@ -1,11 +1,15 @@
 <?php
-    include ("config.php");
+    include_once ("config.php");
 
     // Capa de abstracción de la base de datos 
     class DBAbstract {
         private $mysql;
 
         public function __construct() {
+            echo Config::$dbHost."<br>";
+            echo Config::$dbUser."<br>";
+            echo Config::$dbPass."<br>";
+            echo Config::$dbName."<br>";
             $this->mysql = new mysqli(Config::$dbHost, Config::$dbUser, Config::$dbPass, Config::$dbName);
         }
 

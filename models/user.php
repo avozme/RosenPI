@@ -1,5 +1,5 @@
 <?php
-    include("dbabstract.php");
+    include_once("dbabstract.php");
 
     class User {
         private $db;  
@@ -8,17 +8,13 @@
             $this->db = new DBAbstract();
         }
 
-        public function getUser($id, $type) {
-            $result = $this->db->sqlSelect("SELECT * FROM user");
+        public function findUser($user, $pass) {
+            $result = $this->db->sqlSelect("SELECT * FROM user WHERE name='$user' and password='$pass'");
             if ($result != false && $result->num_rows != 0) { 
-                $fila = $result->fetch_object();
-                $_SESSION["id"] = $fila->id;
-                $_SESSION["tipo"] = $fila->tipo;
-                $userOk = true;
+                return $result;
             } else {
-                $userOk = false;
+                return null;
             }
-            return $userOk;
         }
 
         public function get($id) {

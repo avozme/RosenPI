@@ -6,8 +6,8 @@
             include("views/footer.php");  
         }
 
-        public static function redirect($actionName, $data=null) {
-            $url = "<script>location.href='index.php?do=$actionName";
+        public static function redirect($controller, $actionName, $data=null) {
+            $url = "<script>location.href='index.php?controller=$controller&do=$actionName";
             if ($data != null) {
                 foreach ($data as $clave=>$valor) {
                     $url = $url . "&" . $clave . "=" . $valor;
