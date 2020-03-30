@@ -34,7 +34,7 @@ class LoginController{
         $user = $this->user->findUser($name, $password);
 
         if ($user != null) {
-            View::redirect("MenuController","index");
+            View::redirect("UserController","index");
         } else {
             View::redirect("loginController","show");
         }
