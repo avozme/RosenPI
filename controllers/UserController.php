@@ -30,17 +30,19 @@
 
             $name = $_REQUEST['name'];
             $password = $_REQUEST['password'];
+            $type = $_REQUEST["type"];
+            $image = $_REQUEST["image"];
             $user = $this->user->findUser($name, $password);
 
             if($user == "" or $user == null){
-                View::redirect('loginController', 'show');
+                View::show('user/create');
             }else{
-                View::redirect('UserController', 'show');
+                View::show('user/index');
             }
         }
 
         // Mostrar solo un usuario
-        public function show($user_id, $data) {
+        public function show($user_id, $id) {
             $name = $_REQUEST['name'];
             $password = $_REQUEST['password'];
             $user = $this->user->findUser($name, $password);
