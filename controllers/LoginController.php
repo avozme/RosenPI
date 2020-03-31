@@ -29,7 +29,7 @@ class LoginController{
 
     // Procesa el formulario de login
     private function checkLogin(){
-        $name = $_REQUEST['name'];
+        $name = $_REQUEST['user'];
         $password = $_REQUEST['password'];
         $user = $this->user->findUser($name, $password);
 

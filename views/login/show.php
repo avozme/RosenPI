@@ -2,7 +2,7 @@
 
 <form action="index.php" method="GET">
     Usuario:
-    <input type="text" name="name">
+    <input type="text" name="user">
     <br>
     Password:
     <input type="text" name="password">

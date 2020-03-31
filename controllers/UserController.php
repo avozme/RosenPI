@@ -40,7 +40,7 @@
         }
 
         // Mostrar solo un usuario
-        public function show($user_id) {
+        public function show($user_id, $data) {
             $name = $_REQUEST['name'];
             $password = $_REQUEST['password'];
             $user = $this->user->findUser($name, $password);
@@ -50,7 +50,7 @@
             } else {
                 $users = null;
             }
-            View::show("user/index");
+            View::show("user/index", $data);
         }
 
         // Mostrar el formulario de nuevo usuario
@@ -59,6 +59,7 @@
             $name = $name["name"];
             $passwd = $data["passwd"];
             $type = $data["type"];
+            $image = $data["image"];
         
             if (isset($_REQUEST['type'])) {
                 $data['type'] = $_REQUEST['type'];
@@ -82,8 +83,9 @@
                 'name' => $u['name'],
                 'password' => $u['password'],
                 'type' => $u['type'],
+                'image' => $u['image'],
             ]);
-            View::show("user/index");
+            View::show("user/index", $data);
         }
 
         // Mostrar el formulario de edición de un usuario existente
@@ -92,7 +94,8 @@
             $name = $name["name"];
             $password = $data["password"];
             $type = $data["type"];
-            View::show("user/edit");
+            $image = $data["image"];
+            View::show("user/edit", $data);
         }
 
         // Almacenar en la BD los cambios sobre un usuario existente
@@ -101,6 +104,7 @@
             $name = $name["name"];
             $password = $data["password"];
             $type = $data["type"];
+            $image = $data["image"];
 
             if($user->type == 1 || $user->id == $_REQUEST['id']){
                 $resultUpdate = $this->user->update($data);
@@ -129,4 +133,4 @@
             }
         }        
  
-}    
+    }    

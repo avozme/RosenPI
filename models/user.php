@@ -10,7 +10,7 @@
 
         public function findUser($user, $pass) {
             $result = $this->db->sqlSelect("SELECT * FROM user WHERE name='$user' and password='$pass'");
-            if ($result != false && $result->num_rows != 0) { 
+            if ($result != false && count($result) != 0) { 
                 return $result;
             } else {
                 return null;
