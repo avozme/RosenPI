@@ -33,9 +33,9 @@
             $user = $this->user->findUser($name, $password);
 
             if($user == "" or $user == null){
-                View::show('user/create');
-            }else{
                 View::show('user/index');
+            }else{
+                View::redirect("UserController", 'create');
             }
         }
 
@@ -59,23 +59,23 @@
 
         // Mostrar el formulario de nuevo usuario
         public function create() {
-            $id = $data["id"];
-            $name = $data["name"];
-            $password = $data["password"];
-            $type = $data["type"];
-            $image = $data["image"];
+            //$id = $_REQUEST"id"];
+            $name = $_REQUEST["name"];
+            $password = $_REQUEST["password"];
+            $type = $_REQUEST["type"];
+            $image = $_REQUEST["image"];
         
             if (isset($_REQUEST['type'])) {
                 $data['type'] = $_REQUEST['type'];
             } else {
-                $data['type'] = 1;
+                $data['type'] = 0;
             }
 
             $resultInsert = $this->user->insert($data);
             $data = null;
             
             if ($resultInsert == 1) {
-                View::redirect('loginController', 'checkLogin');
+                View::redirect('UserController', 'store');
             } else{
                 View::redirect("UserController", 'index');
             }
@@ -84,10 +84,10 @@
         // Almacenar en la BD un nuevo usuario
         public function store() {
             User::create([
-                'name' => $u['name'],
-                'password' => $u['password'],
-                'type' => $u['type'],
-                'image' => $u['image'],
+                'name' => ['name'],
+                'password' => ['password'],
+                'type' => ['type'],
+                'image' => ['image'],
             ]);
             View::show("user/index", $data);
         }
@@ -133,7 +133,7 @@
                     echo "Error al borrar";
                 }
             } else {
-                View::redirect("showForLoging");
+                View::redirect("mainMenu");
             }
         }        
  

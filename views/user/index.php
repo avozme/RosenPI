@@ -19,13 +19,13 @@ echo "<tr>";
 echo "</tr>";
 foreach($lista as $fila) {
 
-    if ($user->type == 0)
-            $valor = "Pendiente de Asignación" 
-    elseif($user->type == 1)  
-            $valor = "Administrador" 
-    elseif($user->type == 1)  
-            $valor = "Profesor"
-    endif
+    if ($user->type == 0){
+        $valor = "Pendiente de Asignación" ;
+    }elseif ($user->type == 1) { 
+        $valor = "Administrador" ;
+    }else {
+        $valor = "Profesor";
+    }
 
     echo "<tr>";
         echo "<td>$fila->image</td>";
@@ -45,7 +45,7 @@ echo "</table>";
 <div id="nuevo">
 <br>
 <form action ="index.php" method="get">
-    <input type="hidden" name="do" value="formCreateUser">
+    <input type="hidden" name="do" value="create">
     <input type="submit" value="Insertar usuario">
 </form>
 </div>

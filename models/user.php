@@ -8,8 +8,8 @@
             $this->db = new DBAbstract();
         }
 
-        public function findUser($user, $pass) {
-            $result = $this->db->sqlSelect("SELECT * FROM user WHERE name='$user' and password='$pass'");
+        public function findUser($name, $password) {
+            $result = $this->db->sqlSelect("SELECT * FROM user WHERE name='$name' and password='$password'");
             if ($result != false && count($result) != 0) { 
                 return $result;
             } else {

@@ -40,8 +40,8 @@ class LoginController{
         }
     }
 
-    private function createUser(){
-        View::redirect("UserController", "show");
+    private function create(){
+        View::redirect("UserController", "create");
     }
 
 }
