@@ -4,8 +4,6 @@
     // Controlador de usuario.
     // Esta clase se utilizar para hacer el CRUD de la tabla de usuarios
 
-    // (Rosendo: te dejo la clase preparada, con todas sus funciones, pero sin código,
-    // para que tú escribas el código. LUEGO BORRA ESTE COMENTARIO)
     class UserController {
 
         private $user = null;               // Modelo User
@@ -28,10 +26,10 @@
         // Mostrar todos los usuarios existentes
         public function index() {
 
-            $name = $_REQUEST['name'];
-            $password = $_REQUEST['password'];
-            $type = $_REQUEST["type"];
-            $image = $_REQUEST["image"];
+            $name = ['name'];
+            $password = ['password'];
+            $type = ["type"];
+            $image = ["image"];
             $user = $this->user->findUser($name, $password);
 
             if($user == "" or $user == null){
@@ -43,8 +41,12 @@
 
         // Mostrar solo un usuario
         public function show($user_id, $id) {
+            $id = $_REQUEST['id'];
             $name = $_REQUEST['name'];
             $password = $_REQUEST['password'];
+            $type = $_REQUEST["type"];
+            $image = $_REQUEST["image"];
+
             $user = $this->user->findUser($name, $password);
 
             if ($user != null) {
@@ -58,8 +60,8 @@
         // Mostrar el formulario de nuevo usuario
         public function create() {
             $id = $data["id"];
-            $name = $name["name"];
-            $passwd = $data["passwd"];
+            $name = $data["name"];
+            $password = $data["password"];
             $type = $data["type"];
             $image = $data["image"];
         
@@ -93,7 +95,7 @@
         // Mostrar el formulario de edición de un usuario existente
         public function edit($user_id) {
             $id = $data["id"];
-            $name = $name["name"];
+            $name = $data["name"];
             $password = $data["password"];
             $type = $data["type"];
             $image = $data["image"];
@@ -103,7 +105,7 @@
         // Almacenar en la BD los cambios sobre un usuario existente
         public function update() {
             $id = $data["id"];
-            $name = $name["name"];
+            $name = $data["name"];
             $password = $data["password"];
             $type = $data["type"];
             $image = $data["image"];

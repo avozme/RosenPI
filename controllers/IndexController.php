@@ -1,9 +1,9 @@
 <?php
+// Añadir aquí un include para cada controlador que se vaya creando
 include_once("controllers/LoginController.php");
 include_once("controllers/UserController.php");
 include_once("controllers/ActivityController.php");
 include_once("controllers/MenuController.php");
-// Añadir aquí un include para cada controlador que se vaya creando
 
 // Esta clase es el controlador primario.
 // Se limita a instanciar otro controlador y pasarle el control de la ejecución.
@@ -22,5 +22,4 @@ class IndexController{
         $c = new $controller();
         $c->main();
     }
-
 }
